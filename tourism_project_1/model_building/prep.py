@@ -26,9 +26,8 @@ replaceStruct = {
     "MaritalStatus": {"Unmarried": "Single"},
     }
 df=df.replace(replaceStruct)
-df['TypeofContact', 'Occupation', 'Gender', 'ProductPitched',
-       'MaritalStatus', 'Designation'] = label_encoder.fit_transform(df['TypeofContact', 'Occupation', 'Gender', 'ProductPitched',
-       'MaritalStatus', 'Designation'])
+for column in ['TypeofContact', 'Occupation', 'Gender', 'ProductPitched', 'MaritalStatus', 'Designation']:
+  df[column] = label_encoder.fit_transform(df[column])
 
 target_col = 'ProdTaken'
 
